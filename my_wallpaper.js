@@ -1,6 +1,9 @@
 //your parameter variables go here!
 let wallpaper = 0; // colour palette of wallpaper
 let outline = false; // turns stroke on and off
+let catScale = 1; // scale cat glyph
+let fruitScale = 1; // scale fruit glyph
+let pattern = 0; // switch between cat and fruit patterns
 
 let defaultCol = ("WHITE");
 
