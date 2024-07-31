@@ -35,30 +35,30 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   }
 
   if (wallpaper == 0) {
-    drawCat(50, 50, 100, 100, color("#d4a373")); // buff
+    drawCat([50, 50], [100, 100], color("#d4a373")); // buff
     drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
       [color("#ccd5ae"), color("#e9edc9"), color("#fefae0")]); // tea green, beige, cornsilk
 
   } else if (wallpaper == 1) {
-    drawCat(50, 50, 100, 100, color("#ffd6ba")); // apricot
+    drawCat([50, 50], [100, 100], color("#ffd6ba")); // apricot
     drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
       [color("#555b6e"), color("#89b0ae"), color("#bee3db")]); // payne's gray, cambridge blue, mint green
 
   } else if (wallpaper == 2) {
-    drawCat(50, 50, 100, 100, color("#f0e6ef")); // lavender blush
+    drawCat([50, 50], [100, 100], color("#f0e6ef")); // lavender blush
     drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
       [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6")]); // african violet, lavender pink, pink lavender
 
   } else {
-    drawCat(0, 0, 100, 100, defaultCol);
+    drawCat([0, 0], [100, 100], defaultCol);
     drawFruit([[100, 100], [100, 100], [100, 100]], [[100, 100], [75, 75], [50, 50]], 
       [defaultCol, defaultCol, defaultCol]);
   }
 }
 
-function drawCat(x, y, w, h, col) {
+function drawCat(pos, size, col) {
   fill(col);
-  ellipse(x, y, w, h);
+  ellipse(pos[0], pos[1], size[0], size[1]);
 }
 
 function drawFruit(pos, size, col) {
