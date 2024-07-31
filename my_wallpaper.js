@@ -1,8 +1,9 @@
 //your parameter variables go here!
-let cat = 2; // type of cat
-let bg = 3; // colour of background
+let wallpaper = 0; // colour palette of wallpaper
+let outline = false; // turns stroke on and off
 
-let catCol = ("WHITE");
+let defaultCol = ("WHITE");
+
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
@@ -16,38 +17,55 @@ function setup_wallpaper(pWallpaper) {
 }
 
 function wallpaper_background() {
-  if (bg == 0) {
-    background(color("#f9ebc7")); // lemon meringue
+  if (wallpaper == 0) {
+    background(color("#faedcd")); // papaya whip
 
-  } else if (bg == 1) {
-    background(color("#d5e4cf")); // some green
+  } else if (wallpaper == 1) {
+    background(color("#faf9f9")); // seasalt
 
-  } else if (bg == 2) {
-    background(color("#ffcfd2")); // baby pink
-
-  } else if (bg == 3) {
-    background(color("#bcd4e6")); // some blue
+  } else if (wallpaper == 2) {
+    background(color("#b8bedd")); // periwinkle
 
   }
 }
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
-  if (cat == 0) {
-    catCol = (color(240, 240, 240)); // slightly grey-white
-
-  } else if (cat == 1) {
-    catCol = (color(200, 200, 200)); // grey
-
-  } else if (cat == 2) {
-    catCol = (color("#f7b670")); // orange
-
-  } else if (cat == 3) {
-    catCol = (color("#b99470")); // brown
-
+  if (!outline) {
+    noStroke();
   }
 
-  noStroke();
-  fill(catCol);
-  ellipse(0, 0, 100, 100);
+  if (wallpaper == 0) {
+    drawCat(50, 50, 100, 100, color("#d4a373")); // buff
+    drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
+      [color("#ccd5ae"), color("#e9edc9"), color("#fefae0")]); // tea green, beige, cornsilk
 
+  } else if (wallpaper == 1) {
+    drawCat(50, 50, 100, 100, color("#ffd6ba")); // apricot
+    drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
+      [color("#555b6e"), color("#89b0ae"), color("#bee3db")]); // payne's gray, cambridge blue, mint green
+
+  } else if (wallpaper == 2) {
+    drawCat(50, 50, 100, 100, color("#f0e6ef")); // lavender blush
+    drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
+      [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6")]); // african violet, lavender pink, pink lavender
+
+  } else {
+    drawCat(0, 0, 100, 100, defaultCol);
+    drawFruit([[100, 100], [100, 100], [100, 100]], [[100, 100], [75, 75], [50, 50]], 
+      [defaultCol, defaultCol, defaultCol]);
+  }
+}
+
+function drawCat(x, y, w, h, col) {
+  fill(col);
+  ellipse(x, y, w, h);
+}
+
+function drawFruit(pos, size, col) {
+  fill(col[0]);
+  ellipse(pos[0][0], pos[0][1], size[0][0], size[0][1]);
+  fill(col[1]);
+  ellipse(pos[1][0], pos[1][1], size[1][0], size[1][1]);
+  fill(col[2]);
+  ellipse(pos[2][0], pos[2][1], size[2][0], size[2][1]);
 }
