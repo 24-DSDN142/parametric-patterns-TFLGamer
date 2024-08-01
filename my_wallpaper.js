@@ -38,17 +38,17 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   }
 
   if (wallpaper == 0) {
-    drawCat([50, 50], [100, 100], color("#d4a373")); // buff
+    drawCat([50, 50], [100, 80], color("#d4a373")); // buff
     drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
       [color("#ccd5ae"), color("#e9edc9"), color("#fefae0")]); // tea green, beige, cornsilk
 
   } else if (wallpaper == 1) {
-    drawCat([50, 50], [100, 100], color("#ffd6ba")); // apricot
+    drawCat([50, 50], [100, 80], color("#ffd6ba")); // apricot
     drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
       [color("#555b6e"), color("#89b0ae"), color("#bee3db")]); // payne's gray, cambridge blue, mint green
 
   } else if (wallpaper == 2) {
-    drawCat([50, 50], [100, 100], color("#f0e6ef")); // lavender blush
+    drawCat([50, 50], [100, 80], color("#f0e6ef")); // lavender blush
     drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
       [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6")]); // african violet, lavender pink, pink lavender
 
@@ -61,7 +61,21 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
 
 function drawCat(pos, size, col) {
   fill(col);
+
   ellipse(pos[0], pos[1], size[0], size[1]);
+
+  quad(pos[0] - 15, pos[1] - (size[0] / 2) + 12, pos[0] - 22, pos[1] - (size[1] / 2) - 5, 
+    pos[0] - 40, pos[1] - (size[1] / 2), pos[0] - (size[0] / 2) + 6, pos[1] - 19);
+  ellipse((pos[0] - 30.6), pos[1] - (size[1] / 2) - 1, 18.6, 19);
+
+  quad(pos[0] + 15, pos[1] - (size[0] / 2) + 12, pos[0] + 22, pos[1] - (size[1] / 2) - 5, 
+    pos[0] + 40, pos[1] - (size[1] / 2), pos[0] + (size[0] / 2) - 6, pos[1] - 19);
+  ellipse((pos[0] + 30.6), pos[1] - (size[1] / 2) - 1, 18.6, 19);
+
+  ellipse(pos[0] - 30, pos[1] + 8, 50, 64);
+  ellipse(pos[0] + 30, pos[1] + 8, 50, 64);
+
+  ellipse(pos[0], (pos[1] + size[1] / 2) - 5.4, 80, 20);
 }
 
 function drawFruit(pos, size, col) {
