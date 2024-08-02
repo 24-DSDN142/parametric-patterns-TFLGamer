@@ -1,5 +1,5 @@
 //your parameter variables go here!
-let wallpaper = 1; // colour palette of wallpaper
+let wallpaper = 2; // colour palette of wallpaper
 let catScale = 1; // scale cat glyph
 let fruitScale = 1; // scale fruit glyph
 let pattern = 0; // switch between cat and fruit patterns
@@ -10,7 +10,7 @@ let defaultCol = ("WHITE");
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
   pWallpaper.resolution(NINE_LANDSCAPE);
-  pWallpaper.show_guide(true); //set this to false when you're ready to print
+  pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
   pWallpaper.grid_settings.cell_width  = 200;
@@ -42,7 +42,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
 
   } else if (wallpaper == 2) {
     drawCat([50, 50], [100, 80], [color("#f0e6ef"), color("#735d73")]); // lavender blush, chinese violet
-    drawPassionfruit([150, 150], [60, 60], [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6")]); // african violet, lavender pink, pink lavender
+    drawPassionfruit([150, 150], [60, 60], [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6"), color("#735d73")]); // african violet, lavender pink, pink lavender, chinese violet
 
   } else {
     drawCat([0, 0], [100, 100], defaultCol);
@@ -100,50 +100,43 @@ function drawCat(pos, size, col) {
 }
 
 function drawPear(pos, size, col) {
+  // skin
   noStroke();
   fill(col[0]);
-
-  // skin
   ellipse(pos[0], pos[1], size[0], size[1]);
   ellipse(pos[0], pos[1] - 35, size[0] / 1.5, size[1] / 1.5);
 
   strokeWeight(5);
   stroke(col[0]);
   noFill();
-
   arc(pos[0] - 30, pos[1] - 30, size[0] / 2.4, size[1] / 1.75, -10, 50); // left
   arc(pos[0] + 30, pos[1] - 30, size[0] / 2.4, size[1] / 1.75, 130, 190); // right
 
   // flesh
   noStroke();
   fill(col[2]);
-
   ellipse(pos[0], pos[1], size[0] / 1.2, size[1] / 1.2);
   ellipse(pos[0], pos[1] - 35, size[0] / 2, size[1] / 2);
 
   strokeWeight(7);
   stroke(col[2]);
   noFill();
-
   arc(pos[0] - 24, pos[1] - 28.5, size[0] / 2.3, size[1] / 1.7, -10, 50); // left
   arc(pos[0] + 24, pos[1] - 28.5, size[0] / 2.3, size[1] / 1.7, 130, 190); // right
 
   // core
   noStroke();
   fill(col[1]);
-
   ellipse(pos[0], pos[1], size[0] / 4, size[1] / 4);
 
   strokeWeight(5);
   stroke(col[1]);
-
   line(pos[0] - 5.2, pos[1], pos[0], pos[1] - 10); // left
   line(pos[0] + 5.2, pos[1], pos[0], pos[1] - 10); // right
 
   // seeds
   noStroke();
   fill(col[3]);
-
   ellipse(pos[0] - 2.4, pos[1], size[0] / 20, size[1] / 9); // left
   ellipse(pos[0] + 2.4, pos[1], size[0] / 20, size[1] / 9); // right
 }
@@ -151,29 +144,70 @@ function drawPear(pos, size, col) {
 function drawBlueberry(pos, size, col) {
   noStroke();
   fill(col[1]);
-
   ellipse(pos[0], pos[1], size[0], size[1] / 1.2);
 
   fill(col[0]);
-
   ellipse(pos[0], pos[1] - 12, size[0] / 1.8, size[1] / 3);
 
   fill(col[2]);
-
   ellipse(pos[0], pos[1] - 12, size[0] / 2.4, size[1] / 4.2);
 }
 
 function drawPassionfruit(pos, size, col) {
   noStroke();
   fill(col[0]);
-
   ellipse(pos[0], pos[1], size[0], size[1]);
 
-  fill(col[1]);
-
-  ellipse(pos[0], pos[1], size[0] / 2, size[1] / 2);
-
   fill(col[2]);
+  ellipse(pos[0], pos[1], size[0] / 1.15, size[1] / 1.15);
 
-  ellipse(pos[0], pos[1], size[0] / 4, size[1] / 4);
+  fill(col[1]);
+  ellipse(pos[0], pos[1], size[0] / 1.35, size[1] / 1.35);
+
+  fill(col[3]);
+
+  translate(pos[0], pos[1]);
+  
+  push();
+
+  // outside seeds
+  ellipse(-17, 0, size[0] / 9, size[1] / 16);
+  rotate(45);
+  ellipse(-17, 0, size[0] / 9, size[1] / 16);
+  rotate(45);
+  ellipse(-17, 0, size[0] / 9, size[1] / 16);
+  rotate(45);
+  ellipse(-17, 0, size[0] / 9, size[1] / 16);
+  rotate(45);
+  ellipse(-17, 0, size[0] / 9, size[1] / 16);
+  rotate(45);
+  ellipse(-17, 0, size[0] / 9, size[1] / 16);
+  rotate(45);
+  ellipse(-17, 0, size[0] / 9, size[1] / 16);
+  rotate(45);
+  ellipse(-17, 0, size[0] / 9, size[1] / 16);
+
+  pop();
+  push();
+
+  // bottom inner seeds
+  rotate(22.5);
+  ellipse(7, 0, size[0] / 9, size[1] / 16);
+  rotate(67.5);
+  ellipse(7, 0, size[0] / 9, size[1] / 16);
+  rotate(67.5);
+  ellipse(7, 0, size[0] / 9, size[1] / 16);
+
+  pop();
+  push();
+
+  // top inner seeds
+  rotate(-22.5);
+  ellipse(7, 0, size[0] / 9, size[1] / 16);
+  rotate(-67.5);
+  ellipse(7, 0, size[0] / 9, size[1] / 16);
+  rotate(-67.5);
+  ellipse(7, 0, size[0] / 9, size[1] / 16);
+
+  pop();
 }
