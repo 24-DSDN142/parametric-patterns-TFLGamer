@@ -2,8 +2,8 @@
 let wallpaper = 2; // colour palette of wallpaper
 let catScale = 0.6; // scale cat glyph
 let fruitScale = 1; // scale fruit glyph
-let pattern = 2; // switch between cat and fruit patterns
-let catFaceHeight = 0; // height of cat faces
+let pattern = 1; // switch between cat and fruit patterns
+let catFaceHeight = 18; // height of cat faces
 
 
 function setup_wallpaper(pWallpaper) {
@@ -44,13 +44,28 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     }
 
   } else if (wallpaper == 1) {
-    drawCat([50, 50], [100, 80], [color("#ffd6ba"), color("#8e6a57")]); // apricot, raw umber
-    drawBlueberry([150, 150], [60, 60], [color("#555b6e"), color("#54648a"), color("#8eb4cd")]); // payne's gray, lapis lazuli, carolina blue
+    if (pattern == 0) {
+      drawCat([50, 50], [100, 80], [color("#ffd6ba"), color("#8e6a57")]); // apricot, raw umber
+      drawCat([150, 150], [100, 80], [color("#ffd6ba"), color("#8e6a57")]);
+    } else if (pattern == 1) {
+      drawBlueberry([50, 50], [60, 60], [color("#555b6e"), color("#54648a"), color("#8eb4cd")]); // payne's gray, lapis lazuli, carolina blue
+      drawBlueberry([150, 150], [60, 60], [color("#555b6e"), color("#54648a"), color("#8eb4cd")]);
+    } else if (pattern == 2) {
+      drawCat([50, 50], [100, 80], [color("#ffd6ba"), color("#8e6a57")]);
+      drawBlueberry([150, 150], [60, 60], [color("#555b6e"), color("#54648a"), color("#8eb4cd")]);
+    }
 
   } else if (wallpaper == 2) {
-    drawCat([50, 50], [100, 80], [color("#f0e6ef"), color("#735d73")]); // lavender blush, chinese violet
-    drawPassionfruit([150, 150], [60, 60], [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6"), color("#735d73")]); // african violet, lavender pink, pink lavender, chinese violet
-
+    if (pattern == 0) {
+      drawCat([50, 50], [100, 80], [color("#f0e6ef"), color("#735d73")]); // lavender blush, chinese violet
+      drawCat([150, 150], [100, 80], [color("#f0e6ef"), color("#735d73")]);
+    } else if (pattern == 1) {
+      drawPassionfruit([50, 50], [60, 60], [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6"), color("#735d73")]); // african violet, lavender pink, pink lavender, chinese violet
+      drawPassionfruit([150, 150], [60, 60], [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6"), color("#735d73")]);
+    } else if (pattern == 2) {
+      drawCat([50, 50], [100, 80], [color("#f0e6ef"), color("#735d73")]);
+      drawPassionfruit([150, 150], [60, 60], [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6"), color("#735d73")]);
+    }
   }
 }
 
