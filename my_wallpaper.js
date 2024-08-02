@@ -34,18 +34,15 @@ function wallpaper_background() {
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
   if (wallpaper == 0) {
     drawCat([50, 50], [100, 80], [color("#d4a373"), color("#785e46")]); // buff, coyote
-    drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
-      [color("#ccd5ae"), color("#e9edc9"), color("#fefae0")]); // tea green, beige, cornsilk
+    drawPear([150, 150], [60, 60], [color("#ccd5ae"), color("#e9edc9"), color("#fefae0"), color("#785e46")]); // tea green, beige, cornsilk, coyote
 
   } else if (wallpaper == 1) {
     drawCat([50, 50], [100, 80], [color("#ffd6ba"), color("#8e6a57")]); // apricot, raw umber
-    drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
-      [color("#555b6e"), color("#89b0ae"), color("#bee3db")]); // payne's gray, cambridge blue, mint green
+    drawBlueberry([150, 150], [60, 60], [color("#555b6e"), color("#89b0ae"), color("#bee3db")]); // payne's gray, cambridge blue, mint green
 
   } else if (wallpaper == 2) {
     drawCat([50, 50], [100, 80], [color("#f0e6ef"), color("#735d73")]); // lavender blush, chinese violet
-    drawFruit([[150, 150], [150, 150], [150, 150]], [[100, 100], [75, 75], [50, 50]], 
-      [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6")]); // african violet, lavender pink, pink lavender
+    drawPassionfruit([150, 150], [60, 60], [color("#9c89b8"), color("#f0a6ca"), color("#efc3e6")]); // african violet, lavender pink, pink lavender
 
   } else {
     drawCat([0, 0], [100, 100], defaultCol);
@@ -94,6 +91,7 @@ function drawCat(pos, size, col) {
   line(pos[0] + 42, pos[1] + 18, pos[0] + 48, pos[1] + 19); // right
   line(pos[0] + 39, pos[1] + 23, pos[0] + 43, pos[1] + 27);
 
+  // ears
   line(pos[0] - 30.6, pos[1] - (size[1] / 2) + 1, pos[0] - (size[0] / 2) + 16, pos[1] - 22); // left
   line(pos[0] - 30.6, pos[1] - (size[1] / 2) + 1, pos[0] - (size[0] / 2) + 25, pos[1] - 34);
   line(pos[0] + 30.6, pos[1] - (size[1] / 2) + 1, pos[0] + (size[0] / 2) - 16, pos[1] - 22); // right
@@ -101,13 +99,53 @@ function drawCat(pos, size, col) {
 
 }
 
-function drawFruit(pos, size, col) {
+function drawPear(pos, size, col) {
   noStroke();
-
   fill(col[0]);
-  ellipse(pos[0][0], pos[0][1], size[0][0], size[0][1]);
-  fill(col[1]);
-  ellipse(pos[1][0], pos[1][1], size[1][0], size[1][1]);
+
+  ellipse(pos[0], pos[1], size[0], size[1]);
+  ellipse(pos[0], pos[1] - 35, size[0] / 1.5, size[1] / 1.5);
+
+  strokeWeight(5);
+  stroke(col[0]);
+  noFill();
+
+  arc(pos[0] - 30, pos[1] - 30, size[0] / 2.4, size[1] / 1.75, -10, 50); // left
+  arc(pos[0] + 30, pos[1] - 30, size[0] / 2.4, size[1] / 1.75, 130, 190); // right
+
+  noStroke();
   fill(col[2]);
-  ellipse(pos[2][0], pos[2][1], size[2][0], size[2][1]);
+
+  ellipse(pos[0], pos[1], size[0] / 1.2, size[1] / 1.2);
+  ellipse(pos[0], pos[1] - 35, size[0] / 2, size[1] / 2);
+
+  strokeWeight(7);
+  stroke(col[2]);
+  noFill();
+
+  arc(pos[0] - 24, pos[1] - 28.5, size[0] / 2.3, size[1] / 1.7, -10, 50); // left
+  arc(pos[0] + 24, pos[1] - 28.5, size[0] / 2.3, size[1] / 1.7, 130, 190); // right
+
+  noStroke();
+  fill(col[1]);
+
+  ellipse(pos[0], pos[1], size[0] / 4, size[1] / 4);
+
+  strokeWeight(5);
+  stroke(col[1]);
+
+  line(pos[0] - 5.2, pos[1], pos[0], pos[1] - 10); // left
+  line(pos[0] + 5.2, pos[1], pos[0], pos[1] - 10); // right
+
+  noStroke();
+  fill(col[3]);
+
+  ellipse(pos[0] - 2.4, pos[1], size[0] / 20, size[1] / 9); // left
+  ellipse(pos[0] + 2.4, pos[1], size[0] / 20, size[1] / 9); // right
+}
+
+function drawBlueberry(pos, size, col) {
+}
+
+function drawPassionfruit(pos, size, col) {
 }
