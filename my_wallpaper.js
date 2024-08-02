@@ -1,14 +1,14 @@
 //your parameter variables go here!
-let wallpaper = 2; // colour palette of wallpaper
-let catScale = 0.6; // scale cat glyph
-let fruitScale = 1; // scale fruit glyph
-let pattern = 1; // switch between cat and fruit patterns
-let catFaceHeight = 18; // height of cat faces
+let wallpaper = 0; // colour palette of wallpaper
+let catScale = 2; // scale cat glyph
+let fruitScale = 1.2; // scale fruit glyph
+let pattern = 2; // switch between cat and fruit patterns
+let catFaceHeight = 20; // height of cat faces
 
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(GRID_WALLPAPER);
-  pWallpaper.resolution(NINE_LANDSCAPE);
+  pWallpaper.resolution(A3);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
